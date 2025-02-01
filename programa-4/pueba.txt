@@ -1,0 +1,17 @@
+ // Serializar la lista
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("E:/SEÑOR S/UDG/6-semestre\\Sem-Algoritmia/Programas/programa-3/lista.ser"))) {
+            oos.writeObject(lista);
+            System.out.println("Lista serializada correctamente.");
+            oos.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Deserializar la lista
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("E:/SEÑOR S/UDG/6-semestre/Sem-Algoritmia/Programas/programa-3/lista.ser"))) {
+            ListaEnlazada listaLeida = (ListaEnlazada) ois.readObject();
+           listaLeida.mostrarElementos(); // Asumiendo que quieres mostrar los elementos después de deserializar
+            ois.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
